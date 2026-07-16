@@ -1,0 +1,18 @@
+[Unit]
+Description=Mock BMKG Next.js Server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/projects/garuda-hacks-7/mock-bmkg
+Environment=NODE_ENV=production
+Environment=PORT=3002
+ExecStart=/usr/bin/npm run start -- --hostname 127.0.0.1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
